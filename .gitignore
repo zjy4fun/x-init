@@ -1,0 +1,6 @@
+# gitignore for frontend 
+node_modules/
+dist/
+
+.idea
+.vscode

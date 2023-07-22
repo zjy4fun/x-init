@@ -1,2 +1,13 @@
 # x-init
-前端项目脚手架
+
+A simple CLI for scaffolding Vue.js projects.
+
+## install
+```bash
+npm install -g x-init
+```
+
+## usage
+```bash
+x-init create <project-name>
+```
