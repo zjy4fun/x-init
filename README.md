@@ -2,7 +2,7 @@
 
 A simple CLI for scaffolding Vue.js projects.
 
-![demo](./demo.gif)
+![demo](./demo1.gif)
 
 ## install
 ```bash
