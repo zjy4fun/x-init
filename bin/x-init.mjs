@@ -29,15 +29,22 @@ program
                     name: 'git',
                     message: 'need git?',
                     choices: ['yes', 'no']
+                },
+                {
+                    type: 'list',
+                    name: 'china',
+                    message: 'need China mirror acceleration?',
+                    choices: ['yes', 'no']
                 }
             ])
             .then((answer) => {
                 const spinner = ora()
-                spinner.text = 'downloading...'
                 spinner.start()
                 templateUrls[answer.frameTemplate]
+                const url = answer.china === 'yes' ? templateUrls[answer.frameTemplate].replace('github.com', 'jihulab.com'): templateUrls[answer.frameTemplate]
+                spinner.text = 'downloading from ' + (answer.china === 'yes' ? 'jihulab.com' : 'github.com')
                 download(
-                    templateUrls[answer.frameTemplate],
+                    url,
                     projectName,
                     { clone: true },
                     function (err) {
@@ -63,4 +70,4 @@ program
             })
     })
 
-program.version("1.0.3").parse(process.argv)
+program.version("1.0.4").parse(process.argv)
