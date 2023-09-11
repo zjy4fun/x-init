@@ -1,9 +1,14 @@
 #!/usr/bin/env node
 
-import {program} from 'commander'
+import { program } from 'commander'
 import inquirer from 'inquirer';
 import ora from 'ora';
 import download from 'download-git-repo'
+
+const templateUrls = {
+    'Vue3 + Arco Design': 'direct:https://github.com/zjy4fun/arco-vue3-template.git#main',
+    'Vue3 + Vite + Tailwind CSS': 'direct:https://github.com/zjy4fun/tailwindcss-vue3-vite-template#main'
+}
 
 program
     .command('create <projectName>')
@@ -16,17 +21,19 @@ program
                     type: 'list',
                     name: 'frameTemplate',
                     message: 'choose a frame template',
-                    choices: ['Vue3']
+                    choices: Object.keys(templateUrls)
                 }
             ])
             .then((answer) => {
                 const spinner = ora()
                 spinner.text = 'downloading...'
                 spinner.start()
+                console.log(answer.frameTemplate)
+                templateUrls[answer.frameTemplate]
                 download(
-                    'direct:https://github.com/zjy4fun/arco-vue3-template.git#main',
+                    templateUrls[answer.frameTemplate],
                     projectName,
-                    {clone: true},
+                    { clone: true },
                     function (err) {
                         if (err) {
                             spinner.fail('download failed: ' + JSON.stringify(err))
@@ -39,4 +46,4 @@ program
             })
     })
 
-program.version("1.0.0").parse(process.argv)
+program.version("1.0.1").parse(process.argv)
