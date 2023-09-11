@@ -13,22 +13,21 @@ const templateUrls = {
 }
 
 program
-    .command('create <projectName>')
-    .description('create a new project')
-    .alias('c')
+    .arguments('<projectName>')
+    .description('init a new project')
     .action((projectName, options) => {
         inquirer
             .prompt([
                 {
                     type: 'list',
                     name: 'frameTemplate',
-                    message: 'choose a frame template',
+                    message: 'choose a template',
                     choices: Object.keys(templateUrls)
                 },
                 {
                     type: 'list',
                     name: 'git',
-                    message: 'need git init?',
+                    message: 'need git?',
                     choices: ['yes', 'no']
                 }
             ])
@@ -36,7 +35,6 @@ program
                 const spinner = ora()
                 spinner.text = 'downloading...'
                 spinner.start()
-                console.log(answer.frameTemplate)
                 templateUrls[answer.frameTemplate]
                 download(
                     templateUrls[answer.frameTemplate],

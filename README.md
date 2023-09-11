@@ -9,5 +9,5 @@ npm install -g x-init
 
 ## usage
 ```bash
-x-init create <project-name>
+x <project-name>
 ```
