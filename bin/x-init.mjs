@@ -7,9 +7,10 @@ import ora from 'ora';
 import download from 'download-git-repo'
 
 const templateUrls = {
-    'Simple': 'direct:https://github.com/zjy4fun/vue3-vite-ts-simple-template.git#main',
+    'Vue3 Simple': 'direct:https://github.com/zjy4fun/vue3-vite-ts-simple-template.git#main',
     'Vue3 + Vite + Arco Design': 'direct:https://github.com/zjy4fun/arco-vue3-template.git#main',
-    'Vue3 + Vite + Tailwind CSS': 'direct:https://github.com/zjy4fun/tailwindcss-vue3-vite-template.git#main'
+    'Vue3 + Vite + Tailwind CSS': 'direct:https://github.com/zjy4fun/tailwindcss-vue3-vite-template.git#main',
+    'React Simple': 'direct:https://github.com/zjy4fun/react-simple-template.git#main',
 }
 
 program
@@ -70,4 +71,4 @@ program
             })
     })
 
-program.version("1.0.4").parse(process.argv)
+program.version("1.0.5").parse(process.argv)
