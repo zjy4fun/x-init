@@ -71,4 +71,4 @@ program
             })
     })
 
-program.version("1.0.5").parse(process.argv)
+program.version("1.0.7").parse(process.argv)
