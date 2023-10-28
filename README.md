@@ -1,6 +1,6 @@
 # x-init
 
-A simple CLI for scaffolding Vue.js projects.
+A simple CLI for scaffolding projects, include `react`, `vue`, `nest.js` and so on. 
 
 ![demo](./demo1.gif)
 
