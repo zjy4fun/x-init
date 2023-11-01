@@ -14,19 +14,26 @@ const URLS = {
     'React Simple': 'direct:https://github.com/zjy4fun/react-simple-template.git#main',
 }
 
+const remoteUrl = 'https://x-init-json.vercel.app/api/data'
+const remoteUrl2 = 'https://gist.githubusercontent.com/zjy4fun/03520bd48febab3a5dd44a27ff2062db/raw/a363a827b329f6209b370eb74babf9f50ae55a11/templateUrls.json'
+
+const promise1 = axios.get(remoteUrl, {
+    timeout: 3000,
+});
+const promise2 = axios.get(remoteUrl2, {
+    timeout: 3000,
+});
+
 let templateUrls = URLS
 async function fetchTemplateUrls() {
     const spinner = ora()
     spinner.start()
     try {
-        const response = await axios.get('https://gist.githubusercontent.com/zjy4fun/03520bd48febab3a5dd44a27ff2062db/raw/87cfcb1340cb230e7060d2965421b14d6def0c73/templateUrls.json', {
-            timeout: 3000,
-        });
+        const response = await Promise.race([promise1, promise2])
         spinner.succeed('template URLs fetched');
         return response.data;
     } catch (error) {
         spinner.fail('Failed to fetch template URLs');
-        console.error('Failed to fetch template URLs:', error);
         return URLS;
     }
 }
@@ -90,4 +97,4 @@ program
             })
     })
 
-program.version("1.0.9").parse(process.argv)
+program.version("1.0.10").parse(process.argv)
