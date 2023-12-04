@@ -8,28 +8,23 @@ import download from 'download-git-repo'
 import axios from 'axios'
 
 const URLS = {
-    'Vue3 Simple': 'direct:https://github.com/zjy4fun/vue3-vite-ts-simple-template.git#main',
-    'Vue3 + Vite + Arco Design': 'direct:https://github.com/zjy4fun/arco-vue3-template.git#main',
-    'Vue3 + Vite + Tailwind CSS': 'direct:https://github.com/zjy4fun/tailwindcss-vue3-vite-template.git#main',
-    'React Simple': 'direct:https://github.com/zjy4fun/react-simple-template.git#main',
+    'Vue3': 'direct:https://github.com/zjy4fun/vue3-vite-ts-simple-template.git#main',
+    'React': 'direct:https://github.com/zjy4fun/react-simple-template.git#main',
 }
 
-const remoteUrl = 'https://x-init-json.vercel.app/api/data'
-const remoteUrl2 = 'https://gist.githubusercontent.com/zjy4fun/03520bd48febab3a5dd44a27ff2062db/raw/a363a827b329f6209b370eb74babf9f50ae55a11/templateUrls.json'
+const vercel = 'https://x-init-json.vercel.app/api/data'
+const netlify = 'https://main--extraordinary-queijadas-aa9f68.netlify.app/api/data'
 
-const promise1 = axios.get(remoteUrl, {
+const axiosConfig = {
     timeout: 3000,
-});
-const promise2 = axios.get(remoteUrl2, {
-    timeout: 3000,
-});
+};
 
 let templateUrls = URLS
 async function fetchTemplateUrls() {
     const spinner = ora()
     spinner.start()
     try {
-        const response = await Promise.race([promise1, promise2])
+        const response = await Promise.race([axios.get(vercel, axiosConfig), axios.get(netlify, axiosConfig)])
         spinner.succeed('template URLs fetched');
         return response.data;
     } catch (error) {
@@ -68,7 +63,7 @@ program
                 const spinner = ora()
                 spinner.start()
                 templateUrls[answer.frameTemplate]
-                const url = answer.china === 'yes' ? templateUrls[answer.frameTemplate].replace('github.com', 'jihulab.com'): templateUrls[answer.frameTemplate]
+                const url = answer.china === 'yes' ? templateUrls[answer.frameTemplate].replace('github.com', 'jihulab.com') : templateUrls[answer.frameTemplate]
                 spinner.text = 'downloading from ' + (answer.china === 'yes' ? 'jihulab.com' : 'github.com')
                 download(
                     url,
