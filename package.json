@@ -8,7 +8,8 @@
     "x": "./bin/x-init.mjs"
   },
   "scripts": {
-    "bump": "bump"
+    "bump": "bump",
+    "publish": "npm publish"
   },
   "keywords": [
     "front-end",
