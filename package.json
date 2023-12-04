@@ -1,7 +1,7 @@
 {
   "name": "x-init",
   "author": "zjy4fun",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A simple CLI for scaffolding projects.",
   "main": "index.js",
   "bin": {
