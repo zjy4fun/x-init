@@ -1,14 +1,14 @@
 {
   "name": "x-init",
   "author": "zjy4fun",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A simple CLI for scaffolding projects.",
   "main": "index.js",
   "bin": {
     "x": "./bin/x-init.mjs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bump": "bump"
   },
   "keywords": [
     "front-end",
@@ -28,5 +28,8 @@
     "inquirer": "^9.2.8",
     "log-symbols": "^4.1.0",
     "ora": "^6.3.1"
+  },
+  "devDependencies": {
+    "@jsdevtools/version-bump-prompt": "^6.1.0"
   }
 }
