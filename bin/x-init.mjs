@@ -6,6 +6,8 @@ import inquirer from 'inquirer';
 import ora from 'ora';
 import download from 'download-git-repo'
 import axios from 'axios'
+import fs from "fs";
+const version = JSON.parse(fs.readFileSync('package.json', 'utf8')).version
 
 const URLS = {
     'Vue3': 'direct:https://github.com/zjy4fun/vue3-vite-ts-simple-template.git#main',
@@ -91,3 +93,5 @@ program
                 )
             })
     })
+
+program.version(version).parse(process.argv)
