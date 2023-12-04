@@ -5,7 +5,7 @@
   "description": "A simple CLI for scaffolding projects.",
   "main": "index.js",
   "bin": {
-    "x": "./bin/x-init.mjs"
+    "x": "bin/x-init.mjs"
   },
   "scripts": {
     "bump": "bump",
