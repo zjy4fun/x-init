@@ -16,7 +16,7 @@ const vercel = 'https://x-init-json.vercel.app/api/data'
 const netlify = 'https://main--extraordinary-queijadas-aa9f68.netlify.app/api/data'
 
 const axiosConfig = {
-    timeout: 3000,
+    timeout: 8000,
 };
 
 let templateUrls = URLS
@@ -92,4 +92,4 @@ program
             })
     })
 
-program.version('1.0.13').parse(process.argv)
+program.version('2.0.0').parse(process.argv)
